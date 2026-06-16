@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const orderBtn = e.target.closest('.order-btn, .btn-product');
     if (!orderBtn) return;
     e.preventDefault();
-    const phone = '9677228515';
+    const phone = '919677228515';
     const productName = orderBtn.dataset.productName || orderBtn.closest('.product-card')?.querySelector('h3')?.innerText || document.title;
     const productPrice = orderBtn.dataset.productPrice || '';
     let message = `Hi, I want to order: ${productName}`;
