@@ -10,11 +10,18 @@ document.addEventListener('DOMContentLoaded', function () {
       item.classList.toggle('open');
     });
   });
-
-  const productButtons = document.querySelectorAll('.btn-product');
-  productButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      window.location.href = 'product-details.html';
-    });
+  // Order button handler: opens WhatsApp with a prefilled message
+  document.addEventListener('click', function (e) {
+    const orderBtn = e.target.closest('.order-btn, .btn-product');
+    if (!orderBtn) return;
+    e.preventDefault();
+    const phone = '9677228515';
+    const productName = orderBtn.dataset.productName || orderBtn.closest('.product-card')?.querySelector('h3')?.innerText || document.title;
+    const productPrice = orderBtn.dataset.productPrice || '';
+    let message = `Hi, I want to order: ${productName}`;
+    if (productPrice) message += ` (Price: ${productPrice})`;
+    message += `\nPage: ${location.href}`;
+    const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(waUrl, '_blank');
   });
 });
