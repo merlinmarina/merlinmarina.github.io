@@ -1,0 +1,7 @@
+# Ignore archived design PDFs and generated images
+/archive_designs/
+
+# Node, Python, editor temp files (optional)
+node_modules/
+*.pyc
+.DS_Store
