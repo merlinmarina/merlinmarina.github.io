@@ -89,7 +89,15 @@ export default function Home() {
       </section>
 
       {/* About / Compassionate Care */}
-      <section id="about" className="relative overflow-hidden bg-marina-ink py-24">
+      <section id="about" className="relative overflow-hidden py-24">
+        <div className="absolute inset-0">
+          <img
+            src="/assets/about-bg.jpg"
+            alt="Planted aquarium with tropical fish"
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-marina-ink/85" />
+        </div>
         <div className="blob-shape pointer-events-none absolute -right-40 top-0 h-[32rem] w-[32rem] bg-marina-red/90 opacity-90 blur-0" />
         <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-14 px-6 lg:grid-cols-2">
           <motion.div
@@ -97,27 +105,34 @@ export default function Home() {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             variants={stagger}
-            className="relative z-10 rounded-[2.5rem] bg-marina-green/95 p-10 sm:p-12"
-            style={{ backgroundColor: '#22c55e' }}
+            className="relative z-10 overflow-hidden rounded-[2.5rem] p-10 sm:p-12"
           >
-            <motion.span variants={fadeUp} className="text-xs font-extrabold uppercase tracking-widest text-marina-red">
+            <div className="absolute inset-0 -z-10">
+              <img
+                src="/assets/about-card-bg.jpg"
+                alt="Neon tetras among driftwood and plants"
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-marina-ink/90 via-marina-blue/85 to-marina-ink/75" />
+            </div>
+            <motion.span variants={fadeUp} className="text-xs font-extrabold uppercase tracking-widest text-marina-cyan">
               Our Story &amp; Mission
             </motion.span>
-            <motion.h2 variants={fadeUp} className="mt-3 font-display text-4xl font-extrabold uppercase leading-tight text-marina-blue sm:text-5xl">
+            <motion.h2 variants={fadeUp} className="mt-3 font-display text-4xl font-extrabold uppercase leading-tight text-white sm:text-5xl">
               Compassionate Care
             </motion.h2>
             <motion.span
               variants={fadeUp}
-              className="mt-5 inline-block rounded-full bg-marina-blue px-5 py-2 text-xs font-bold uppercase tracking-wide text-white"
+              className="mt-5 inline-block rounded-full bg-marina-red px-5 py-2 text-xs font-bold uppercase tracking-wide text-white"
             >
               30 Years of Experience in Aquarium
             </motion.span>
-            <motion.p variants={fadeUp} className="mt-6 text-sm leading-relaxed text-marina-blue/90 sm:text-base">
+            <motion.p variants={fadeUp} className="mt-6 text-sm leading-relaxed text-white/85 sm:text-base">
               At Merlin Marina, we believe in combining approachable technicality with compassionate care. We
               provide everything you need to create a thriving aquatic environment, from beautifully crafted fish
               tanks and effective filters to nutritious food, playful toys, and other essential aquarium accessories.
             </motion.p>
-            <motion.p variants={fadeUp} className="mt-4 text-sm leading-relaxed text-marina-blue/90 sm:text-base">
+            <motion.p variants={fadeUp} className="mt-4 text-sm leading-relaxed text-white/85 sm:text-base">
               As we continue to grow, we are slowly expanding our family to include feathered friends. We are proud
               to introduce a curated selection of love birds, parrots, and specialized avian accessories to bring
               vibrant excellence to every corner of your home.
@@ -143,11 +158,11 @@ export default function Home() {
       </section>
 
       {/* Shop by Category */}
-      <section className="relative overflow-hidden bg-marina-ink py-24">
+      <section className="relative overflow-hidden bg-marina-indigo py-24">
         <div className="blob-shape pointer-events-none absolute left-1/2 top-0 h-[30rem] w-[30rem] -translate-x-1/2 bg-marina-red/80 opacity-90" />
         <div className="relative mx-auto max-w-7xl px-6">
           <div className="mb-14 text-center">
-            <span className="text-xs font-extrabold uppercase tracking-widest text-marina-red">Premium Selection</span>
+            <span className="text-xs font-extrabold uppercase tracking-widest text-white">Premium Selection</span>
             <h2 className="mt-3 font-display text-3xl font-extrabold uppercase text-white sm:text-4xl">Shop By Category</h2>
           </div>
           <motion.div
