@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import {
   MessageCircle, ShoppingBag, Building2, Home as HomeIcon, UtensilsCrossed,
   Hotel, Briefcase, Store, HeartHandshake, Sparkles, ShieldCheck, Fish, Bird,
+  Phone, Clock, MapPin,
 } from 'lucide-react'
 import PageTransition from '../components/PageTransition'
 import CategoryCard from '../components/CategoryCard'
@@ -46,7 +47,7 @@ export default function Home() {
       {/* Hero */}
       <section className="relative flex min-h-[92vh] items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/assets/hero-aquarium.jpg" alt="Planted aquarium tank with colorful tropical fish" className="h-full w-full object-cover" />
+          <img src="/assets/p1_2.png" alt="Colorful reef aquarium with corals and tropical fish" className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-marina-hero opacity-70" />
           <div className="absolute inset-0 bg-gradient-to-t from-marina-ink/70 via-transparent to-transparent" />
         </div>
@@ -95,7 +96,7 @@ export default function Home() {
       </section>
 
       {/* About / Compassionate Care */}
-      <section id="about" className="relative overflow-hidden bg-white py-24">
+      <section id="about" className="relative overflow-hidden bg-marina-blue/5 py-24">
         <div className="blob-shape pointer-events-none absolute -right-40 top-0 h-[32rem] w-[32rem] bg-white opacity-90 shadow-2xl shadow-marina-blue/10 blur-0" />
         <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-14 px-6 lg:grid-cols-2">
           <motion.div
@@ -103,29 +104,21 @@ export default function Home() {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             variants={stagger}
-            className="relative z-10 overflow-hidden rounded-[2.5rem] p-10 sm:p-12"
+            className="relative z-10 rounded-[2.5rem] bg-white p-10 shadow-pop sm:p-12"
           >
-            <div className="absolute inset-0 -z-10">
-              <img
-                src="/assets/about-card-bg.jpg"
-                alt="Neon tetras among driftwood and plants"
-                className="h-full w-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-br from-marina-ink/90 via-marina-blue/85 to-marina-ink/75" />
-            </div>
-            <motion.span variants={fadeUp} className="text-xs font-extrabold uppercase tracking-widest text-marina-cyan">
+            <motion.span variants={fadeUp} className="text-xs font-extrabold uppercase tracking-widest text-marina-red">
               Our Story &amp; Mission
             </motion.span>
-            <motion.h2 variants={fadeUp} className="mt-3 font-display text-4xl font-extrabold uppercase leading-tight text-white sm:text-5xl">
+            <motion.h2 variants={fadeUp} className="mt-3 font-display text-4xl font-extrabold uppercase leading-tight text-marina-blue sm:text-5xl">
               Compassionate Care
             </motion.h2>
             <motion.span
               variants={fadeUp}
-              className="mt-5 inline-block rounded-full bg-gradient-to-r from-marina-blue to-marina-green px-5 py-2 text-xs font-bold uppercase tracking-wide text-white shadow-md"
+              className="mt-5 inline-block rounded-full bg-gradient-to-r from-emerald-600 to-green-400 px-5 py-2 text-xs font-bold uppercase tracking-wide text-white shadow-md shadow-green-500/30"
             >
               30 Years of Experience in Aquarium
             </motion.span>
-            <motion.p variants={fadeUp} className="mt-6 text-sm leading-relaxed text-white/85 sm:text-base">
+            <motion.p variants={fadeUp} className="mt-6 text-sm leading-relaxed text-marina-blue/70 sm:text-base">
               At Merlin Marina, we combine approachable technicality with compassionate care — everything you need
               for a thriving aquatic environment, plus a growing family of feathered friends.
             </motion.p>
@@ -133,9 +126,9 @@ export default function Home() {
               {storyHighlights.map(({ icon: Icon, label }) => (
                 <span
                   key={label}
-                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-semibold text-white backdrop-blur transition-colors hover:border-marina-cyan/50 hover:bg-white/20"
+                  className="inline-flex items-center gap-2 rounded-full border border-marina-blue/10 bg-marina-blue/5 px-4 py-2 text-xs font-semibold text-marina-blue transition-colors hover:border-marina-red/40 hover:bg-marina-red/5"
                 >
-                  <Icon size={14} className="text-marina-cyan" /> {label}
+                  <Icon size={14} className="text-marina-red" /> {label}
                 </span>
               ))}
             </motion.div>
@@ -205,7 +198,7 @@ export default function Home() {
             whileInView="show"
             viewport={{ once: true, amount: 0.2 }}
             variants={stagger}
-            className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-6"
+            className="mx-auto grid max-w-4xl grid-cols-2 gap-5 sm:grid-cols-3"
           >
             {services.map(({ icon: Icon, label }) => (
               <motion.div
@@ -213,12 +206,12 @@ export default function Home() {
                 variants={fadeUp}
                 whileHover={{ y: -6 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex flex-col items-center gap-4 rounded-2xl border border-marina-blue/10 bg-white p-6 text-center shadow-sm transition-colors hover:shadow-pop active:border-marina-red active:bg-marina-red/10"
+                className="group flex flex-col items-center gap-4 rounded-2xl border border-marina-blue/10 bg-white p-8 text-center shadow-sm transition-all hover:border-marina-red hover:bg-marina-red/5 hover:shadow-pop active:border-marina-red active:bg-marina-red/10"
               >
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-marina-blue/5 text-marina-blue">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-marina-blue/5 text-marina-blue transition-colors group-hover:bg-marina-red group-hover:text-white">
                   <Icon size={24} />
                 </div>
-                <span className="text-sm font-bold text-marina-blue">{label}</span>
+                <span className="text-sm font-bold text-marina-blue transition-colors group-hover:text-marina-red">{label}</span>
               </motion.div>
             ))}
           </motion.div>
@@ -258,7 +251,18 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="relative overflow-hidden bg-marina-contact py-24 text-white">
+      <section id="contact" className="relative overflow-hidden py-24 text-white">
+        <div className="absolute inset-0">
+          <iframe
+            title="Merlin Marina location"
+            src="https://www.google.com/maps?q=No-4A,+Hanumar+Koil+Street,+Radha+Nagar,+Chromepet,+Chennai&z=16&output=embed"
+            className="pointer-events-none h-full w-full border-0"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-marina-contact opacity-80" />
+        </div>
+        <div className="pointer-events-none absolute -left-24 top-0 h-72 w-72 rounded-full bg-marina-cyan/20 blur-3xl" />
+        <div className="pointer-events-none absolute -right-16 bottom-0 h-80 w-80 rounded-full bg-marina-red/30 blur-3xl" />
         <div className="relative mx-auto max-w-3xl px-6 text-center">
           <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-white/15 backdrop-blur">
             <MessageCircle size={24} />
@@ -271,21 +275,21 @@ export default function Home() {
           </p>
           <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
             {[
-              { label: 'Contact Us', value: siteConfig.phone },
-              { label: 'Working Hours', value: 'Mon - Sun\n10:00 AM - 9:00 PM' },
-              { label: 'Visit Us', value: 'No- 4A, Hanumar Koil Street,\nRadha Nagar, Chromepet' },
-            ].map((c) => (
+              { icon: Phone, label: 'Contact Us', value: siteConfig.phone },
+              { icon: Clock, label: 'Working Hours', value: 'Mon - Sun\n10:00 AM - 9:00 PM' },
+              { icon: MapPin, label: 'Visit Us', value: 'No-4A, Hanumar Koil Street,\nRadha Nagar, Chromepet' },
+            ].map(({ icon: Icon, ...c }) => (
               <motion.div
                 key={c.label}
                 whileHover={{ y: -4 }}
                 whileTap={{ scale: 0.96 }}
-                className="rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur transition-colors hover:border-white/40 hover:bg-white/20 active:border-white/60 active:bg-white/25"
+                className="rounded-2xl border border-white/15 bg-white/10 p-6 shadow-lg shadow-marina-ink/20 backdrop-blur transition-colors hover:border-marina-cyan/60 hover:bg-white/20 active:border-white/60 active:bg-white/25"
               >
-                <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-marina-cyan text-marina-ink">
-                  <Sparkles size={16} />
+                <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-marina-cyan to-marina-indigo text-white shadow-md">
+                  <Icon size={16} />
                 </div>
                 <h4 className="text-sm font-bold">{c.label}</h4>
-                <p className="mt-1 whitespace-pre-line text-xs text-white/75">{c.value}</p>
+                <p className="mt-1 whitespace-pre-line text-xs text-white/80">{c.value}</p>
               </motion.div>
             ))}
           </div>

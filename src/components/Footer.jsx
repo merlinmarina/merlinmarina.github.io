@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
-import { Instagram, Youtube, Phone, MapPin, Clock } from 'lucide-react'
+import { Instagram, Youtube } from 'lucide-react'
 import { siteConfig } from '../data/config'
 import { categories } from '../data/categories'
 
 export default function Footer() {
   return (
     <footer className="bg-marina-ink text-white/90">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-16 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mx-auto flex max-w-7xl flex-col gap-10 px-6 py-16 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <Link to="/" className="flex items-center gap-3">
             <img src="/assets/p1_9.png" alt="Merlin Marina" className="h-11 w-11 rounded-xl object-cover" />
@@ -40,7 +40,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div>
+        <div className="sm:text-right">
           <h4 className="mb-4 text-sm font-bold uppercase tracking-wide text-white">Shop</h4>
           <ul className="space-y-2.5 text-sm text-white/60">
             <li><Link to="/products" className="hover:text-white">All Products</Link></li>
@@ -49,15 +49,6 @@ export default function Footer() {
                 <Link to={`/category/${c.slug}`} className="hover:text-white">{c.name}</Link>
               </li>
             ))}
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="mb-4 text-sm font-bold uppercase tracking-wide text-white">Contact</h4>
-          <ul className="space-y-3 text-sm text-white/60">
-            <li className="flex items-center gap-2"><Phone size={15} className="text-marina-cyan" /> {siteConfig.phone}</li>
-            <li className="flex items-start gap-2"><MapPin size={15} className="mt-0.5 shrink-0 text-marina-cyan" /> {siteConfig.address}</li>
-            <li className="flex items-center gap-2"><Clock size={15} className="text-marina-cyan" /> {siteConfig.hours}</li>
           </ul>
         </div>
       </div>
