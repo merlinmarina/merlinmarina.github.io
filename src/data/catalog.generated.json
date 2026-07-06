@@ -1,0 +1,882 @@
+[
+  {
+    "id": "aq-1",
+    "name": "Tropical Micro Pellets",
+    "brand": "Hikari",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 380,
+    "priceRange": "₹300-450",
+    "description": "Floating pellets, small-mouthed fish"
+  },
+  {
+    "id": "aq-2",
+    "name": "Cichlid Gold",
+    "brand": "Hikari",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 660,
+    "priceRange": "₹450-870",
+    "description": "Color-enhancing floating pellets"
+  },
+  {
+    "id": "aq-3",
+    "name": "Tropical Food Sticks 250g",
+    "brand": "Hikari",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 1450,
+    "priceRange": "₹1200-1700",
+    "description": "For Arowana, Oscar, large carnivores"
+  },
+  {
+    "id": "aq-4",
+    "name": "Marine A / Marine S",
+    "brand": "Hikari",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 1280,
+    "priceRange": "₹800-1750",
+    "description": "Marine fish pellets"
+  },
+  {
+    "id": "aq-5",
+    "name": "Betta Bio-Gold",
+    "brand": "Hikari",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 550,
+    "priceRange": "₹400-700",
+    "description": "Pellets for bettas"
+  },
+  {
+    "id": "aq-6",
+    "name": "Algae Wafers",
+    "brand": "Hikari",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 500,
+    "priceRange": "₹350-650",
+    "description": "Bottom feeder wafers, plecos/catfish"
+  },
+  {
+    "id": "aq-7",
+    "name": "Crab & Lobster Bites",
+    "brand": "Hikari",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 550,
+    "priceRange": "₹400-700",
+    "description": "Sinking wafers for crustaceans"
+  },
+  {
+    "id": "aq-8",
+    "name": "Gold Pond Food (Growth/Color)",
+    "brand": "Hikari",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 700,
+    "priceRange": "₹500-900",
+    "description": "Koi/pond floating pellets"
+  },
+  {
+    "id": "aq-9",
+    "name": "Tropical Fancy Guppy",
+    "brand": "Hikari",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 480,
+    "priceRange": "₹350-600",
+    "description": "Guppy-specific pellets"
+  },
+  {
+    "id": "aq-10",
+    "name": "TetraMin Flakes",
+    "brand": "Tetra",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 330,
+    "priceRange": "₹150-500",
+    "description": "Staple flake food, all tropical fish"
+  },
+  {
+    "id": "aq-11",
+    "name": "Tetra Granules",
+    "brand": "Tetra",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 380,
+    "priceRange": "₹200-550",
+    "description": "Granulated staple food"
+  },
+  {
+    "id": "aq-12",
+    "name": "Tetra Cichlid Pellets",
+    "brand": "Tetra",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 430,
+    "priceRange": "₹250-600",
+    "description": "Cichlid-specific pellets"
+  },
+  {
+    "id": "aq-13",
+    "name": "Tetra Goldfish Pellets/Flakes",
+    "brand": "Tetra",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 300,
+    "priceRange": "₹150-450",
+    "description": "Goldfish food"
+  },
+  {
+    "id": "aq-14",
+    "name": "Tetra Bloodworms (freeze-dried)",
+    "brand": "Tetra",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 350,
+    "priceRange": "₹200-500",
+    "description": "Freeze-dried treat"
+  },
+  {
+    "id": "aq-15",
+    "name": "Sera Vipan Flakes",
+    "brand": "Sera",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 500,
+    "priceRange": "₹300-700",
+    "description": "Staple flake food"
+  },
+  {
+    "id": "aq-16",
+    "name": "Sera Granured",
+    "brand": "Sera",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 550,
+    "priceRange": "₹350-750",
+    "description": "Granulated food"
+  },
+  {
+    "id": "aq-17",
+    "name": "Sera Discus Granulat",
+    "brand": "Sera",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 850,
+    "priceRange": "₹500-1200",
+    "description": "Discus-specific food"
+  },
+  {
+    "id": "aq-18",
+    "name": "Sera Goldy",
+    "brand": "Sera",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 480,
+    "priceRange": "₹300-650",
+    "description": "Goldfish food"
+  },
+  {
+    "id": "aq-19",
+    "name": "General Fish Food",
+    "brand": "Taiyo",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 170,
+    "priceRange": "₹80-250",
+    "description": "Budget staple food"
+  },
+  {
+    "id": "aq-20",
+    "name": "Floating Pellets (Goldfish/Carp)",
+    "brand": "Taiyo",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 200,
+    "priceRange": "₹100-300",
+    "description": "Pond/goldfish food"
+  },
+  {
+    "id": "aq-21",
+    "name": "Parrot Fish Food",
+    "brand": "Taiyo",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 200,
+    "priceRange": "₹100-300",
+    "description": "Parrot cichlid food"
+  },
+  {
+    "id": "aq-22",
+    "name": "Turtle Food",
+    "brand": "Taiyo",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 200,
+    "priceRange": "₹100-300",
+    "description": "Turtle food"
+  },
+  {
+    "id": "aq-23",
+    "name": "Formula One Flakes/Pellets",
+    "brand": "Ocean Nutrition",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 650,
+    "priceRange": "₹400-900",
+    "description": "Marine/reef diet"
+  },
+  {
+    "id": "aq-24",
+    "name": "Formula Two Flakes/Pellets",
+    "brand": "Ocean Nutrition",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 650,
+    "priceRange": "₹400-900",
+    "description": "Herbivore marine diet"
+  },
+  {
+    "id": "aq-25",
+    "name": "Prime Reef Flake",
+    "brand": "Ocean Nutrition",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 600,
+    "priceRange": "₹400-800",
+    "description": "Reef fish flake food"
+  },
+  {
+    "id": "aq-26",
+    "name": "Flowerhorn Growth/Color Food",
+    "brand": "Ocean Free",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 800,
+    "priceRange": "₹400-1200",
+    "description": "Flowerhorn-specific"
+  },
+  {
+    "id": "aq-27",
+    "name": "Arowana Food",
+    "brand": "Ocean Free",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 1000,
+    "priceRange": "₹500-1500",
+    "description": "Arowana-specific"
+  },
+  {
+    "id": "aq-28",
+    "name": "Baby Bites 15g",
+    "brand": "Life Aayu",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 150,
+    "priceRange": "₹150",
+    "description": "Fry/baby fish food"
+  },
+  {
+    "id": "aq-29",
+    "name": "Bacter Boost Plus",
+    "brand": "Life Aayu",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 310,
+    "priceRange": "₹275+",
+    "description": "Aquarium bacteria starter"
+  },
+  {
+    "id": "aq-30",
+    "name": "Blood Worm Pellets 90g",
+    "brand": "Life Aayu",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 490,
+    "priceRange": "₹490",
+    "description": "Bloodworm pellets"
+  },
+  {
+    "id": "aq-31",
+    "name": "Blood Worm Pellets 45g",
+    "brand": "Life Aayu",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 330,
+    "priceRange": "₹290+",
+    "description": "Bloodworm pellets, smaller pack"
+  },
+  {
+    "id": "aq-32",
+    "name": "Bloodworm Gel Mix",
+    "brand": "Life Aayu",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 170,
+    "priceRange": "₹150+",
+    "description": "Gel food for fry/nano fish"
+  },
+  {
+    "id": "aq-33",
+    "name": "Algae Wafer 15g/45g",
+    "brand": "Life Aayu",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 300,
+    "priceRange": "₹150-450",
+    "description": "Pleco/algae eater food"
+  },
+  {
+    "id": "aq-34",
+    "name": "Arowana Premium Food",
+    "brand": "Life Aayu",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 890,
+    "priceRange": "₹790+",
+    "description": "Handmade Ayurvedic Arowana diet"
+  },
+  {
+    "id": "aq-35",
+    "name": "Artemia Gel Mix",
+    "brand": "Life Aayu",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 150,
+    "priceRange": "₹150",
+    "description": "Enzyme-enhanced fry food"
+  },
+  {
+    "id": "aq-36",
+    "name": "Fish Flakes",
+    "brand": "API",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 280,
+    "priceRange": "₹150-400",
+    "description": "Staple flake food"
+  },
+  {
+    "id": "aq-37",
+    "name": "Pond Pellets",
+    "brand": "API",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 500,
+    "priceRange": "₹300-700",
+    "description": "Pond fish food"
+  },
+  {
+    "id": "aq-38",
+    "name": "Community Formula Pellets",
+    "brand": "New Life Spectrum",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 1050,
+    "priceRange": "₹600-1500",
+    "description": "Community tank pellets"
+  },
+  {
+    "id": "aq-39",
+    "name": "Cichlid Formula Pellets",
+    "brand": "New Life Spectrum",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 1050,
+    "priceRange": "₹600-1500",
+    "description": "Cichlid pellets"
+  },
+  {
+    "id": "aq-40",
+    "name": "Dried Mealworms",
+    "brand": "Promeal",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 280,
+    "priceRange": "₹150-400",
+    "description": "High-protein treat"
+  },
+  {
+    "id": "aq-41",
+    "name": "Dried Roaches",
+    "brand": "Promeal",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 280,
+    "priceRange": "₹150-400",
+    "description": "High-protein treat"
+  },
+  {
+    "id": "aq-42",
+    "name": "Dried Superworms",
+    "brand": "Promeal",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 300,
+    "priceRange": "₹150-450",
+    "description": "High-protein treat"
+  },
+  {
+    "id": "aq-43",
+    "name": "General Flakes/Pellets",
+    "brand": "WA Fish Feed",
+    "category": "Fish Food",
+    "group": "food-toys",
+    "price": 230,
+    "priceRange": "₹100-350",
+    "description": "Budget general food"
+  },
+  {
+    "id": "aq-44",
+    "name": "Standard Rectangular Glass Tank",
+    "brand": "Boyu",
+    "category": "Tanks",
+    "group": "tanks-filters",
+    "price": 4750,
+    "priceRange": "₹1500-8000",
+    "description": "Various sizes"
+  },
+  {
+    "id": "aq-45",
+    "name": "Aquarium Set (tank+filter+light)",
+    "brand": "Boyu",
+    "category": "Tanks",
+    "group": "tanks-filters",
+    "price": 7500,
+    "priceRange": "₹3000-12000",
+    "description": "Starter combo kits"
+  },
+  {
+    "id": "aq-46",
+    "name": "Glass Tank (nano to 4ft)",
+    "brand": "Sobo",
+    "category": "Tanks",
+    "group": "tanks-filters",
+    "price": 2650,
+    "priceRange": "₹300-5000",
+    "description": "Various sizes"
+  },
+  {
+    "id": "aq-47",
+    "name": "Starter Kit",
+    "brand": "Sobo",
+    "category": "Tanks",
+    "group": "tanks-filters",
+    "price": 3750,
+    "priceRange": "₹1500-6000",
+    "description": "Beginner combo kits"
+  },
+  {
+    "id": "aq-48",
+    "name": "Cube Garden Series",
+    "brand": "ADA",
+    "category": "Tanks",
+    "group": "tanks-filters",
+    "price": 24000,
+    "priceRange": "₹8000-40000",
+    "description": "Premium rimless aquascaping tanks"
+  },
+  {
+    "id": "aq-49",
+    "name": "35U/45U/60U Rimless Tanks",
+    "brand": "UNS",
+    "category": "Tanks",
+    "group": "tanks-filters",
+    "price": 27500,
+    "priceRange": "₹10000-45000",
+    "description": "Premium rimless glass tanks"
+  },
+  {
+    "id": "aq-50",
+    "name": "EF-10 External Canister Filter",
+    "brand": "Boyu",
+    "category": "Filters",
+    "group": "tanks-filters",
+    "price": 5420,
+    "priceRange": "₹5424",
+    "description": "Canister filter w/ UV"
+  },
+  {
+    "id": "aq-51",
+    "name": "Internal Filter",
+    "brand": "Boyu",
+    "category": "Filters",
+    "group": "tanks-filters",
+    "price": 1250,
+    "priceRange": "₹500-2000",
+    "description": "Basic internal filtration"
+  },
+  {
+    "id": "aq-52",
+    "name": "HOB Filter",
+    "brand": "Boyu",
+    "category": "Filters",
+    "group": "tanks-filters",
+    "price": 1650,
+    "priceRange": "₹800-2500",
+    "description": "Hang-on-back filter"
+  },
+  {
+    "id": "aq-53",
+    "name": "Internal Filter",
+    "brand": "Sobo",
+    "category": "Filters",
+    "group": "tanks-filters",
+    "price": 900,
+    "priceRange": "₹300-1500",
+    "description": "Budget internal filter"
+  },
+  {
+    "id": "aq-54",
+    "name": "HOB Filter",
+    "brand": "Sobo",
+    "category": "Filters",
+    "group": "tanks-filters",
+    "price": 1300,
+    "priceRange": "₹600-2000",
+    "description": "Hang-on-back filter"
+  },
+  {
+    "id": "aq-55",
+    "name": "Internal/Submersible Filter",
+    "brand": "Atman",
+    "category": "Filters",
+    "group": "tanks-filters",
+    "price": 1100,
+    "priceRange": "₹400-1800",
+    "description": "Compact filter"
+  },
+  {
+    "id": "aq-56",
+    "name": "Classic External Canister",
+    "brand": "Eheim",
+    "category": "Filters",
+    "group": "tanks-filters",
+    "price": 12000,
+    "priceRange": "₹6000-18000",
+    "description": "Premium canister filter"
+  },
+  {
+    "id": "aq-57",
+    "name": "Ecco Pro Canister",
+    "brand": "Eheim",
+    "category": "Filters",
+    "group": "tanks-filters",
+    "price": 14000,
+    "priceRange": "₹8000-20000",
+    "description": "Premium canister filter"
+  },
+  {
+    "id": "aq-58",
+    "name": "HW Series Canister Filter",
+    "brand": "Sunsun",
+    "category": "Filters",
+    "group": "tanks-filters",
+    "price": 4750,
+    "priceRange": "₹2500-7000",
+    "description": "Mid-range canister"
+  },
+  {
+    "id": "aq-59",
+    "name": "07 Series Canister Filter",
+    "brand": "Fluval",
+    "category": "Filters",
+    "group": "tanks-filters",
+    "price": 17500,
+    "priceRange": "₹10000-25000",
+    "description": "Premium canister filter"
+  },
+  {
+    "id": "aq-60",
+    "name": "compactON 300/600/1000/2100/3000",
+    "brand": "Eheim",
+    "category": "Motors/Pumps",
+    "group": "tanks-filters",
+    "price": 6350,
+    "priceRange": "₹3700-9000",
+    "description": "Adjustable water pumps"
+  },
+  {
+    "id": "aq-61",
+    "name": "compactON 5000/9000/12000/16000",
+    "brand": "Eheim",
+    "category": "Motors/Pumps",
+    "group": "tanks-filters",
+    "price": 17500,
+    "priceRange": "₹10000-25000",
+    "description": "High flow pumps"
+  },
+  {
+    "id": "aq-62",
+    "name": "Air100 Single Outlet Air Pump",
+    "brand": "Eheim",
+    "category": "Motors/Pumps",
+    "group": "tanks-filters",
+    "price": 3950,
+    "priceRange": "₹3949",
+    "description": "Compact air pump"
+  },
+  {
+    "id": "aq-63",
+    "name": "ACO-001 Electromagnetic Air Pump",
+    "brand": "Resun",
+    "category": "Motors/Pumps",
+    "group": "tanks-filters",
+    "price": 850,
+    "priceRange": "₹500-1200",
+    "description": "Aeration pump"
+  },
+  {
+    "id": "aq-64",
+    "name": "ACO-003 Electromagnetic Air Pump",
+    "brand": "Resun",
+    "category": "Motors/Pumps",
+    "group": "tanks-filters",
+    "price": 1000,
+    "priceRange": "₹600-1400",
+    "description": "Aeration pump"
+  },
+  {
+    "id": "aq-65",
+    "name": "SB-988 4-Outlet Air Pump",
+    "brand": "Sobo",
+    "category": "Motors/Pumps",
+    "group": "tanks-filters",
+    "price": 1940,
+    "priceRange": "₹1941",
+    "description": "Adjustable flow, silent"
+  },
+  {
+    "id": "aq-66",
+    "name": "DC Wave Maker/Circulation Pump",
+    "brand": "Jebao/Jecod",
+    "category": "Motors/Pumps",
+    "group": "tanks-filters",
+    "price": 7500,
+    "priceRange": "₹3000-12000",
+    "description": "Wave maker for reef/planted tanks"
+  },
+  {
+    "id": "aq-67",
+    "name": "Air Pump (various HP)",
+    "brand": "Hailea",
+    "category": "Motors/Pumps",
+    "group": "tanks-filters",
+    "price": 1750,
+    "priceRange": "₹500-3000",
+    "description": "General aeration pump"
+  },
+  {
+    "id": "aq-68",
+    "name": "A Series LED",
+    "brand": "Chihiros",
+    "category": "Lights",
+    "group": "tanks-filters",
+    "price": 6500,
+    "priceRange": "₹4000-9000",
+    "description": "Mounted lighting system"
+  },
+  {
+    "id": "aq-69",
+    "name": "A Plus Series LED",
+    "brand": "Chihiros",
+    "category": "Lights",
+    "group": "tanks-filters",
+    "price": 9000,
+    "priceRange": "₹6000-12000",
+    "description": "Higher output for heavy planting"
+  },
+  {
+    "id": "aq-70",
+    "name": "C II LED",
+    "brand": "Chihiros",
+    "category": "Lights",
+    "group": "tanks-filters",
+    "price": 3750,
+    "priceRange": "₹2500-5000",
+    "description": "White LED, nano tanks"
+  },
+  {
+    "id": "aq-71",
+    "name": "RGB VIVID II / Mini",
+    "brand": "Chihiros",
+    "category": "Lights",
+    "group": "tanks-filters",
+    "price": 15200,
+    "priceRange": "₹8800-21600",
+    "description": "3-in-1 RGB, app controlled"
+  },
+  {
+    "id": "aq-72",
+    "name": "WRGB II / Pro / Slim",
+    "brand": "Chihiros",
+    "category": "Lights",
+    "group": "tanks-filters",
+    "price": 17500,
+    "priceRange": "₹10000-25000",
+    "description": "4-in-1 WRGB, app controlled"
+  },
+  {
+    "id": "aq-73",
+    "name": "Universal WRGB 600/800",
+    "brand": "Chihiros",
+    "category": "Lights",
+    "group": "tanks-filters",
+    "price": 16000,
+    "priceRange": "₹12000-20000",
+    "description": "Universal retrofit light"
+  },
+  {
+    "id": "aq-74",
+    "name": "E-Series RGB Light",
+    "brand": "Twinstar",
+    "category": "Lights",
+    "group": "tanks-filters",
+    "price": 12000,
+    "priceRange": "₹6000-18000",
+    "description": "Over-tank RGB light"
+  },
+  {
+    "id": "aq-75",
+    "name": "Light G Series",
+    "brand": "Twinstar",
+    "category": "Lights",
+    "group": "tanks-filters",
+    "price": 14000,
+    "priceRange": "₹8000-20000",
+    "description": "Aquascaping light"
+  },
+  {
+    "id": "aq-76",
+    "name": "ENTRIQ Series",
+    "brand": "Skylight",
+    "category": "Lights",
+    "group": "tanks-filters",
+    "price": 16000,
+    "priceRange": "₹10000-22000",
+    "description": "Aquarium set lighting"
+  },
+  {
+    "id": "aq-77",
+    "name": "Basic LED Light",
+    "brand": "Sobo",
+    "category": "Lights",
+    "group": "tanks-filters",
+    "price": 1250,
+    "priceRange": "₹500-2000",
+    "description": "Budget clip-on/hood light"
+  },
+  {
+    "id": "aq-78",
+    "name": "LED Light",
+    "brand": "Nemo Light",
+    "category": "Lights",
+    "group": "tanks-filters",
+    "price": 2750,
+    "priceRange": "₹1500-4000",
+    "description": "Budget-mid LED"
+  },
+  {
+    "id": "aq-79",
+    "name": "Thermocontrol Heater 25W-300W",
+    "brand": "Eheim",
+    "category": "Heaters",
+    "group": "tanks-filters",
+    "price": 4000,
+    "priceRange": "₹2000-6000",
+    "description": "Adjustable precision heater"
+  },
+  {
+    "id": "aq-80",
+    "name": "Submersible Heater",
+    "brand": "Sobo",
+    "category": "Heaters",
+    "group": "tanks-filters",
+    "price": 750,
+    "priceRange": "₹300-1200",
+    "description": "Budget heater"
+  },
+  {
+    "id": "aq-81",
+    "name": "Submersible Heater",
+    "brand": "Atman",
+    "category": "Heaters",
+    "group": "tanks-filters",
+    "price": 950,
+    "priceRange": "₹400-1500",
+    "description": "Budget-mid heater"
+  },
+  {
+    "id": "aq-82",
+    "name": "CO2 Generator Kit 2.5L",
+    "brand": "Chihiros",
+    "category": "CO2 Systems",
+    "group": "tanks-filters",
+    "price": 6000,
+    "priceRange": "₹4000-8000",
+    "description": "Includes diffuser + regulator"
+  },
+  {
+    "id": "aq-83",
+    "name": "Dosing Pump System (4-head)",
+    "brand": "Chihiros",
+    "category": "CO2 Systems",
+    "group": "tanks-filters",
+    "price": 8200,
+    "priceRange": "₹4400-12000",
+    "description": "App-controlled auto dosing"
+  },
+  {
+    "id": "aq-84",
+    "name": "CO2 Diffuser",
+    "brand": "Twinstar",
+    "category": "CO2 Systems",
+    "group": "tanks-filters",
+    "price": 2750,
+    "priceRange": "₹1500-4000",
+    "description": "Planted tank CO2 diffuser"
+  },
+  {
+    "id": "aq-85",
+    "name": "Digital TDS Meter",
+    "brand": "Lifesonic",
+    "category": "Test Kits",
+    "group": "tanks-filters",
+    "price": 850,
+    "priceRange": "₹500-1200",
+    "description": "Water quality meter"
+  },
+  {
+    "id": "aq-86",
+    "name": "Digital pH Meter",
+    "brand": "Lifesonic",
+    "category": "Test Kits",
+    "group": "tanks-filters",
+    "price": 850,
+    "priceRange": "₹500-1200",
+    "description": "Water purity meter"
+  },
+  {
+    "id": "aq-87",
+    "name": "Master Test Kit (100 tests)",
+    "brand": "Lifesonic",
+    "category": "Test Kits",
+    "group": "tanks-filters",
+    "price": 1300,
+    "priceRange": "₹800-1800",
+    "description": "pH/Ammonia/Nitrite kit"
+  },
+  {
+    "id": "aq-88",
+    "name": "Aqua Test Kit",
+    "brand": "Bionix",
+    "category": "Test Kits",
+    "group": "tanks-filters",
+    "price": 700,
+    "priceRange": "₹400-1000",
+    "description": "Basic water test kit"
+  }
+]
