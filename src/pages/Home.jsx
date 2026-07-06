@@ -40,8 +40,13 @@ export default function Home() {
       {/* Hero */}
       <section className="relative flex min-h-[92vh] items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/assets/p1_2.png" alt="Aquarium at Merlin Marina" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-marina-hero opacity-80" />
+          {/* mix-blend-color re-tints the photo's hue/saturation with the
+              brand gradient while keeping its natural light/dark detail, so
+              the result reads as "on-brand" instead of a clashing rainbow
+              reef photo under a translucent wash. */}
+          <img src="/assets/p1_2.png" alt="Aquarium at Merlin Marina" className="h-full w-full object-cover grayscale-[15%]" />
+          <div className="absolute inset-0 bg-marina-hero mix-blend-color" />
+          <div className="absolute inset-0 bg-marina-ink/45" />
           <div className="absolute inset-0 bg-gradient-to-t from-marina-ink/70 via-transparent to-transparent" />
         </div>
         <div className="pointer-events-none absolute -left-24 top-1/3 h-72 w-72 rounded-full bg-marina-red/30 blur-3xl" />
@@ -223,7 +228,7 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section className="relative overflow-hidden bg-marina-contact py-24 text-white">
+      <section id="contact" className="relative overflow-hidden bg-marina-contact py-24 text-white">
         <div className="relative mx-auto max-w-3xl px-6 text-center">
           <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-white/15 backdrop-blur">
             <MessageCircle size={24} />

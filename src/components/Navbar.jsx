@@ -8,7 +8,7 @@ const links = [
   { to: '/', label: 'Home' },
   { to: '/products', label: 'Products' },
   { to: '/#services', label: 'Services' },
-  { to: '/#about', label: 'About' },
+  { to: '/#contact', label: 'Contact Us' },
 ]
 
 // Home ("/") and the two hash anchors ("/#services", "/#about") all share the
