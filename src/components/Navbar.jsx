@@ -42,18 +42,18 @@ export default function Navbar() {
           <img src="/assets/p1_9.png" alt="Merlin Marina" className="h-16 w-16 rounded-xl object-cover" />
           <span className="leading-tight">
             <span className="block font-display text-2xl font-bold text-marina-blue">Merlin Marina</span>
-            <span className="hidden text-xs font-semibold uppercase tracking-wide text-marina-indigo/70 sm:block">
+            <span className="hidden text-[0.65rem] font-semibold uppercase tracking-wide text-marina-indigo/70 sm:block">
               {siteConfig.tagline}
             </span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex">
+        <nav className="hidden items-center gap-9 md:flex">
           {links.map((l) => (
             <Link
               key={l.to}
               to={l.to}
-              className={`relative text-sm font-semibold transition-colors ${
+              className={`relative text-base font-bold transition-colors ${
                 isLinkActive(l.to, location) ? 'text-marina-red' : 'text-marina-blue/70 hover:text-marina-blue'
               }`}
             >

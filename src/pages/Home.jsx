@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import {
   MessageCircle, ShoppingBag, Building2, Home as HomeIcon, UtensilsCrossed,
-  Hotel, Briefcase, Store, HeartHandshake, Sparkles, ShieldCheck,
+  Hotel, Briefcase, Store, HeartHandshake, Sparkles, ShieldCheck, Fish, Bird,
 } from 'lucide-react'
 import PageTransition from '../components/PageTransition'
 import CategoryCard from '../components/CategoryCard'
@@ -26,6 +26,12 @@ const services = [
   { icon: Hotel, label: 'Hotels' },
   { icon: Briefcase, label: 'Offices' },
   { icon: Store, label: 'Commercial Places' },
+]
+
+const storyHighlights = [
+  { icon: Fish, label: 'Aquatic Life & Tanks' },
+  { icon: Bird, label: 'Avian Companions' },
+  { icon: Sparkles, label: 'Premium Accessories' },
 ]
 
 const values = [
@@ -70,12 +76,6 @@ export default function Home() {
             transition={{ delay: 0.5, duration: 0.6 }}
             className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
           >
-            <Link
-              to="/products"
-              className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-8 py-4 text-sm font-extrabold uppercase tracking-wide text-white backdrop-blur transition hover:bg-white/20"
-            >
-              <ShoppingBag size={18} /> Shop All Products
-            </Link>
             <a
               href={whatsappLink('Hi Merlin Marina, I would like to know more about your products.')}
               target="_blank"
@@ -84,6 +84,12 @@ export default function Home() {
             >
               <MessageCircle size={18} /> WhatsApp
             </a>
+            <Link
+              to="/products"
+              className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-8 py-4 text-sm font-extrabold uppercase tracking-wide text-white backdrop-blur transition-all hover:-translate-y-1 hover:bg-white/20 hover:shadow-pop"
+            >
+              <ShoppingBag size={18} /> Shop All Products
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -115,20 +121,24 @@ export default function Home() {
             </motion.h2>
             <motion.span
               variants={fadeUp}
-              className="mt-5 inline-block rounded-full bg-marina-red px-5 py-2 text-xs font-bold uppercase tracking-wide text-white"
+              className="mt-5 inline-block rounded-full bg-gradient-to-r from-marina-blue to-marina-green px-5 py-2 text-xs font-bold uppercase tracking-wide text-white shadow-md"
             >
               30 Years of Experience in Aquarium
             </motion.span>
             <motion.p variants={fadeUp} className="mt-6 text-sm leading-relaxed text-white/85 sm:text-base">
-              At Merlin Marina, we believe in combining approachable technicality with compassionate care. We
-              provide everything you need to create a thriving aquatic environment, from beautifully crafted fish
-              tanks and effective filters to nutritious food, playful toys, and other essential aquarium accessories.
+              At Merlin Marina, we combine approachable technicality with compassionate care — everything you need
+              for a thriving aquatic environment, plus a growing family of feathered friends.
             </motion.p>
-            <motion.p variants={fadeUp} className="mt-4 text-sm leading-relaxed text-white/85 sm:text-base">
-              As we continue to grow, we are slowly expanding our family to include feathered friends. We are proud
-              to introduce a curated selection of love birds, parrots, and specialized avian accessories to bring
-              vibrant excellence to every corner of your home.
-            </motion.p>
+            <motion.div variants={fadeUp} className="mt-6 flex flex-wrap gap-3">
+              {storyHighlights.map(({ icon: Icon, label }) => (
+                <span
+                  key={label}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-semibold text-white backdrop-blur transition-colors hover:border-marina-cyan/50 hover:bg-white/20"
+                >
+                  <Icon size={14} className="text-marina-cyan" /> {label}
+                </span>
+              ))}
+            </motion.div>
           </motion.div>
 
           <motion.div
@@ -140,7 +150,9 @@ export default function Home() {
           >
             <div className="absolute -left-4 -top-4 h-full w-full rounded-3xl border-4 border-marina-indigo" />
             <div className="absolute -bottom-4 -right-4 h-full w-full rounded-3xl border-4 border-marina-red" />
-            <img
+            <motion.img
+              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.4 }}
               src="/assets/p1_4.png"
               alt="Our Story & Mission"
               className="relative aspect-[4/5] w-full rounded-3xl border-4 border-white object-cover shadow-2xl"
