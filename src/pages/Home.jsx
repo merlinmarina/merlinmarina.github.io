@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import {
   MessageCircle, ShoppingBag, Building2, Home as HomeIcon, UtensilsCrossed,
-  Hotel, Briefcase, Store, HeartHandshake, Sparkles, ShieldCheck, ArrowRight,
+  Hotel, Briefcase, Store, HeartHandshake, Sparkles, ShieldCheck,
 } from 'lucide-react'
 import PageTransition from '../components/PageTransition'
 import CategoryCard from '../components/CategoryCard'
@@ -89,16 +89,8 @@ export default function Home() {
       </section>
 
       {/* About / Compassionate Care */}
-      <section id="about" className="relative overflow-hidden py-24">
-        <div className="absolute inset-0">
-          <img
-            src="/assets/about-bg.jpg"
-            alt="Planted aquarium with tropical fish"
-            className="h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-marina-ink/85" />
-        </div>
-        <div className="blob-shape pointer-events-none absolute -right-40 top-0 h-[32rem] w-[32rem] bg-marina-red/90 opacity-90 blur-0" />
+      <section id="about" className="relative overflow-hidden bg-white py-24">
+        <div className="blob-shape pointer-events-none absolute -right-40 top-0 h-[32rem] w-[32rem] bg-white opacity-90 shadow-2xl shadow-marina-blue/10 blur-0" />
         <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-14 px-6 lg:grid-cols-2">
           <motion.div
             initial="hidden"
@@ -158,8 +150,15 @@ export default function Home() {
       </section>
 
       {/* Shop by Category */}
-      <section className="relative overflow-hidden bg-marina-indigo py-24">
-        <div className="blob-shape pointer-events-none absolute left-1/2 top-0 h-[30rem] w-[30rem] -translate-x-1/2 bg-marina-red/80 opacity-90" />
+      <section className="relative overflow-hidden py-24">
+        <div className="absolute inset-0">
+          <img
+            src="/assets/category-section-bg.jpg"
+            alt="Vibrant red discus fish in a planted aquarium"
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-marina-indigo/80" />
+        </div>
         <div className="relative mx-auto max-w-7xl px-6">
           <div className="mb-14 text-center">
             <span className="text-xs font-extrabold uppercase tracking-widest text-white">Premium Selection</span>
@@ -201,7 +200,8 @@ export default function Home() {
                 key={label}
                 variants={fadeUp}
                 whileHover={{ y: -6 }}
-                className="flex flex-col items-center gap-4 rounded-2xl border border-marina-blue/10 bg-white p-6 text-center shadow-sm transition-shadow hover:shadow-pop"
+                whileTap={{ scale: 0.95 }}
+                className="flex flex-col items-center gap-4 rounded-2xl border border-marina-blue/10 bg-white p-6 text-center shadow-sm transition-colors hover:shadow-pop active:border-marina-red active:bg-marina-red/10"
               >
                 <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-marina-blue/5 text-marina-blue">
                   <Icon size={24} />
@@ -263,23 +263,20 @@ export default function Home() {
               { label: 'Working Hours', value: 'Mon - Sun\n10:00 AM - 9:00 PM' },
               { label: 'Visit Us', value: 'No- 4A, Hanumar Koil Street,\nRadha Nagar, Chromepet' },
             ].map((c) => (
-              <div key={c.label} className="rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur">
+              <motion.div
+                key={c.label}
+                whileHover={{ y: -4 }}
+                whileTap={{ scale: 0.96 }}
+                className="rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur transition-colors hover:border-white/40 hover:bg-white/20 active:border-white/60 active:bg-white/25"
+              >
                 <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-marina-cyan text-marina-ink">
                   <Sparkles size={16} />
                 </div>
                 <h4 className="text-sm font-bold">{c.label}</h4>
                 <p className="mt-1 whitespace-pre-line text-xs text-white/75">{c.value}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
-          <a
-            href={whatsappLink('Hi Merlin Marina, I would like to know more about your products.')}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-10 inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-extrabold uppercase tracking-wide text-marina-red shadow-pop transition-transform hover:-translate-y-1"
-          >
-            Chat With Us <ArrowRight size={18} />
-          </a>
         </div>
       </section>
     </PageTransition>
