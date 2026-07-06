@@ -40,13 +40,8 @@ export default function Home() {
       {/* Hero */}
       <section className="relative flex min-h-[92vh] items-center overflow-hidden">
         <div className="absolute inset-0">
-          {/* mix-blend-color re-tints the photo's hue/saturation with the
-              brand gradient while keeping its natural light/dark detail, so
-              the result reads as "on-brand" instead of a clashing rainbow
-              reef photo under a translucent wash. */}
-          <img src="/assets/p1_2.png" alt="Aquarium at Merlin Marina" className="h-full w-full object-cover grayscale-[15%]" />
-          <div className="absolute inset-0 bg-marina-hero mix-blend-color" />
-          <div className="absolute inset-0 bg-marina-ink/45" />
+          <img src="/assets/hero-aquarium.jpg" alt="Planted aquarium tank with colorful tropical fish" className="h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-marina-hero opacity-70" />
           <div className="absolute inset-0 bg-gradient-to-t from-marina-ink/70 via-transparent to-transparent" />
         </div>
         <div className="pointer-events-none absolute -left-24 top-1/3 h-72 w-72 rounded-full bg-marina-red/30 blur-3xl" />
@@ -73,7 +68,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="mt-10 flex items-center justify-center"
+            className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
           >
             <Link
               to="/products"
@@ -81,6 +76,14 @@ export default function Home() {
             >
               <ShoppingBag size={18} /> Shop All Products
             </Link>
+            <a
+              href={whatsappLink('Hi Merlin Marina, I would like to know more about your products.')}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-8 py-4 text-sm font-extrabold uppercase tracking-wide text-white shadow-pop transition-transform hover:-translate-y-1"
+            >
+              <MessageCircle size={18} /> WhatsApp
+            </a>
           </motion.div>
         </div>
       </section>

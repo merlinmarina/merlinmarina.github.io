@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, MessageCircle } from 'lucide-react'
-import { whatsappLink, siteConfig } from '../data/config'
+import { Menu, X } from 'lucide-react'
+import { siteConfig } from '../data/config'
 
 const links = [
   { to: '/', label: 'Home' },
@@ -62,15 +62,6 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <a
-          href={whatsappLink('Hi Merlin Marina, I have a question about your products.')}
-          target="_blank"
-          rel="noreferrer"
-          className="hidden items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-white shadow-pop transition-transform hover:-translate-y-0.5 md:inline-flex"
-        >
-          <MessageCircle size={16} /> WhatsApp
-        </a>
-
         <button
           className="rounded-lg p-2 text-marina-blue md:hidden"
           onClick={() => setOpen((v) => !v)}
@@ -102,14 +93,6 @@ export default function Navbar() {
                   {l.label}
                 </Link>
               ))}
-              <a
-                href={whatsappLink('Hi Merlin Marina, I have a question about your products.')}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-bold uppercase text-white"
-              >
-                <MessageCircle size={16} /> WhatsApp
-              </a>
             </div>
           </motion.nav>
         )}
