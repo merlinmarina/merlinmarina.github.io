@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products | Merlin Marina</title>
+  <meta name="description" content="Browse aquarium essentials, live fishes, plants, filters, food and avian accessories from Merlin Marina." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/catalog.css" />
+  <link rel="icon" type="image/png" href="assets/p1_9.png" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <img src="assets/p1_9.png" alt="Merlin Marina" class="logo-img" />
+        <span class="logo-text">
+          <strong>Merlin Marina</strong>
+          <small>Quality Care For Every Fin And Feather</small>
+        </span>
+      </a>
+      <nav class="nav" id="mainNav">
+        <a href="index.html#about">About</a>
+        <a href="products.html" class="active">Products</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#contact">Contact Us</a>
+      </nav>
+      <a href="https://wa.me/917338963335" target="_blank" rel="noreferrer" class="btn btn-whatsapp">
+        <i class="fab fa-whatsapp"></i> Ping us in WhatsApp
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Catalog -->
+  <section class="section catalog-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Our Catalog</span>
+        <h2>Shop Our Products</h2>
+        <p class="section-sub">Browse our range and order directly over WhatsApp.</p>
+      </div>
+
+      <div class="catalog-toolbar">
+        <div class="catalog-search">
+          <i class="fas fa-magnifying-glass"></i>
+          <input type="search" id="searchInput" placeholder="Search products…" />
+        </div>
+        <div class="chip-row" id="chipRow"></div>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+
+      <div class="catalog-footer">
+        <p id="countLabel"></p>
+        <button class="btn btn-primary" id="moreBtn" hidden>Load More</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <img src="assets/p1_9.png" alt="Merlin Marina" class="logo-img" />
+          <span class="logo-text">
+            <strong>Merlin Marina</strong>
+            <small>Quality Care For Every Fin And Feather</small>
+          </span>
+        </a>
+        <p>Your destination for fishes, aquariums, love birds, parrots, and all related accessories.</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/merlinmarina79" target="_blank" rel="noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.youtube.com/@MerlinmarinaAquarium" target="_blank" rel="noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="index.html#about">About</a>
+        <a href="products.html">Products</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#contact">Contact Us</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <a href="tel:+917338963335"><i class="fas fa-phone"></i> 7338963335</a>
+        <span><i class="fas fa-map-marker-alt"></i> Chromepet, Chennai</span>
+        <span><i class="fas fa-clock"></i> Mon-Sun, 10AM-9PM</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; <span id="year"></span> Merlin Marina. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/catalog.js"></script>
+</body>
+</html>
