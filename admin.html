@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin | Merlin Marina</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="icon" type="image/png" href="assets/p1_9.png" />
+</head>
+<body>
+
+  <!-- Login screen -->
+  <div class="login-screen" id="loginScreen">
+    <form class="login-card" id="loginForm">
+      <img src="assets/p1_9.png" alt="Merlin Marina" class="login-logo" />
+      <h1>Merlin Marina</h1>
+      <p class="login-sub">Admin Dashboard</p>
+      <label>
+        Username
+        <input type="text" id="loginUser" autocomplete="username" required />
+      </label>
+      <label>
+        Password
+        <input type="password" id="loginPass" autocomplete="current-password" required />
+      </label>
+      <p class="login-error" id="loginError" hidden>Invalid username or password.</p>
+      <button type="submit" class="btn btn-primary btn-block">
+        <i class="fas fa-lock"></i> Sign In
+      </button>
+      <a href="index.html" class="login-back"><i class="fas fa-arrow-left"></i> Back to website</a>
+    </form>
+  </div>
+
+  <!-- Dashboard -->
+  <div class="admin" id="adminApp" hidden>
+    <header class="admin-header">
+      <div class="admin-header-left">
+        <img src="assets/p1_9.png" alt="" class="admin-logo" />
+        <div>
+          <strong>Merlin Marina</strong>
+          <small>Product Admin</small>
+        </div>
+      </div>
+      <div class="admin-header-right">
+        <span class="dirty-badge" id="dirtyBadge" hidden><i class="fas fa-circle"></i> Unsaved changes</span>
+        <button class="btn btn-ghost" id="settingsBtn" title="GitHub settings"><i class="fas fa-gear"></i></button>
+        <button class="btn btn-ghost" id="downloadBtn" title="Download products.json backup"><i class="fas fa-download"></i></button>
+        <button class="btn btn-primary" id="saveBtn" disabled><i class="fas fa-cloud-arrow-up"></i> Publish Changes</button>
+        <button class="btn btn-ghost" id="logoutBtn" title="Log out"><i class="fas fa-right-from-bracket"></i></button>
+      </div>
+    </header>
+
+    <div class="stats" id="stats"></div>
+
+    <div class="toolbar">
+      <div class="search-box">
+        <i class="fas fa-magnifying-glass"></i>
+        <input type="search" id="searchInput" placeholder="Search products…" />
+      </div>
+      <select id="categoryFilter"><option value="">All categories</option></select>
+      <select id="statusFilter">
+        <option value="">All statuses</option>
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+        <option value="in">In stock</option>
+        <option value="out">Out of stock</option>
+      </select>
+      <button class="btn btn-secondary" id="addBtn"><i class="fas fa-plus"></i> Add Product</button>
+    </div>
+
+    <div class="table-wrap">
+      <table class="ptable">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Product</th>
+            <th>Category</th>
+            <th class="num">Price</th>
+            <th class="num">MRP</th>
+            <th class="num">Qty</th>
+            <th>Stock</th>
+            <th>Active</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+      <div class="table-footer">
+        <span id="countLabel"></span>
+        <button class="btn btn-secondary" id="moreBtn" hidden>Show more</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit modal -->
+  <div class="modal-backdrop" id="editModal" hidden>
+    <div class="modal">
+      <div class="modal-head">
+        <h2 id="modalTitle">Edit Product</h2>
+        <button class="icon-btn" data-close><i class="fas fa-xmark"></i></button>
+      </div>
+      <form id="editForm" class="modal-body">
+        <div class="modal-grid">
+          <div class="modal-fields">
+            <label>Product name
+              <input type="text" id="fName" required />
+            </label>
+            <label>Category
+              <input type="text" id="fCategory" list="categoryList" required />
+              <datalist id="categoryList"></datalist>
+            </label>
+            <div class="field-row">
+              <label>Selling price (₹)
+                <input type="number" id="fPrice" min="0" step="0.01" required />
+              </label>
+              <label>Original price / MRP (₹)
+                <input type="number" id="fOriginal" min="0" step="0.01" />
+              </label>
+            </div>
+            <label>Description
+              <textarea id="fDescription" rows="4" placeholder="Shown to customers on the products page"></textarea>
+            </label>
+            <div class="field-row">
+              <label>Quantity
+                <input type="number" id="fQuantity" min="0" step="1" />
+              </label>
+              <label>Stock status
+                <select id="fStock">
+                  <option value="in">In stock</option>
+                  <option value="out">Out of stock</option>
+                </select>
+              </label>
+            </div>
+            <label class="check-label">
+              <input type="checkbox" id="fActive" />
+              Active (visible on the website)
+            </label>
+          </div>
+          <div class="modal-image">
+            <div class="img-preview" id="imgPreview">
+              <img id="fImagePreview" alt="" hidden />
+              <span id="imgPlaceholder"><i class="fas fa-image"></i> No image</span>
+            </div>
+            <label>Image URL
+              <input type="url" id="fImage" placeholder="https://… or assets/products/…" />
+            </label>
+            <label class="upload-label">
+              <input type="file" id="fImageFile" accept="image/*" hidden />
+              <span class="btn btn-secondary btn-block"><i class="fas fa-upload"></i> Upload new image</span>
+            </label>
+            <small class="hint">Uploads are committed to the repo under <code>assets/products/</code> when you publish. Requires the GitHub token to be set.</small>
+          </div>
+        </div>
+        <div class="modal-foot">
+          <button type="button" class="btn btn-danger" id="deleteBtn"><i class="fas fa-trash"></i> Delete</button>
+          <span class="spacer"></span>
+          <button type="button" class="btn btn-ghost" data-close>Cancel</button>
+          <button type="submit" class="btn btn-primary">Apply</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Settings modal -->
+  <div class="modal-backdrop" id="settingsModal" hidden>
+    <div class="modal modal-sm">
+      <div class="modal-head">
+        <h2>Publish Settings</h2>
+        <button class="icon-btn" data-close><i class="fas fa-xmark"></i></button>
+      </div>
+      <form id="settingsForm" class="modal-body">
+        <p class="hint">
+          Changes are published by committing <code>data/products.json</code> to GitHub.
+          Create a <strong>fine-grained personal access token</strong> with
+          <em>Contents: Read &amp; write</em> permission on the
+          <code>merlinmarina/merlinmarina.github.io</code> repository.
+        </p>
+        <label>GitHub token
+          <input type="password" id="sToken" placeholder="github_pat_…" autocomplete="off" />
+        </label>
+        <label>Branch
+          <input type="text" id="sBranch" value="main" />
+        </label>
+        <label class="check-label">
+          <input type="checkbox" id="sRemember" />
+          Remember token on this device
+        </label>
+        <div class="modal-foot">
+          <span class="spacer"></span>
+          <button type="button" class="btn btn-ghost" data-close>Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Settings</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>
