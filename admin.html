@@ -47,7 +47,7 @@
         </div>
       </div>
       <div class="admin-header-right">
-        <span class="dirty-badge" id="dirtyBadge" hidden><i class="fas fa-circle"></i> Unsaved changes</span>
+        <span class="dirty-badge" id="dirtyBadge" hidden><i class="fas fa-circle"></i> <span class="dirty-text">Unsaved changes</span></span>
         <button class="btn btn-ghost" id="settingsBtn" title="GitHub settings"><i class="fas fa-gear"></i></button>
         <button class="btn btn-ghost" id="downloadBtn" title="Download products.json backup"><i class="fas fa-download"></i></button>
         <button class="btn btn-primary" id="saveBtn" disabled><i class="fas fa-cloud-arrow-up"></i> Publish Changes</button>
@@ -136,6 +136,9 @@
                 </select>
               </label>
             </div>
+            <label>Shipping note <small class="hint">(optional — leave empty for now)</small>
+              <textarea id="fShipping" rows="2" placeholder="e.g. Ships within 2-3 business days"></textarea>
+            </label>
             <label class="check-label">
               <input type="checkbox" id="fActive" />
               Active (visible on the website)
@@ -146,14 +149,19 @@
               <img id="fImagePreview" alt="" hidden />
               <span id="imgPlaceholder"><i class="fas fa-image"></i> No image</span>
             </div>
-            <label>Image URL
-              <input type="url" id="fImage" placeholder="https://… or assets/products/…" />
-            </label>
-            <label class="upload-label">
-              <input type="file" id="fImageFile" accept="image/*" hidden />
-              <span class="btn btn-secondary btn-block"><i class="fas fa-upload"></i> Upload new image</span>
-            </label>
-            <small class="hint">Uploads are committed to the repo under <code>assets/products/</code> when you publish. Requires the GitHub token to be set.</small>
+            <div class="img-gallery" id="imgGallery"></div>
+            <div class="img-actions">
+              <label class="upload-label">
+                <input type="file" id="fImageFile" accept="image/*" multiple hidden />
+                <span class="btn btn-secondary"><i class="fas fa-upload"></i> Add images</span>
+              </label>
+              <button type="button" class="btn btn-secondary" id="cameraBtn"><i class="fas fa-camera"></i> Take photo</button>
+            </div>
+            <div class="url-add">
+              <input type="url" id="fImageUrl" placeholder="…or paste an image URL" />
+              <button type="button" class="btn btn-secondary" id="addUrlBtn"><i class="fas fa-plus"></i></button>
+            </div>
+            <small class="hint">The first image is the main photo shown on the website — click a thumbnail to make it the main one. New photos are committed to <code>assets/products/</code> when you publish.</small>
           </div>
         </div>
         <div class="modal-foot">
@@ -196,6 +204,27 @@
           <button type="submit" class="btn btn-primary">Save Settings</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- Camera modal -->
+  <div class="modal-backdrop" id="cameraModal" hidden>
+    <div class="modal modal-sm">
+      <div class="modal-head">
+        <h2>Take Photo</h2>
+        <button class="icon-btn" data-close><i class="fas fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="camera-view">
+          <video id="cameraVideo" autoplay playsinline muted></video>
+        </div>
+        <p class="hint" id="cameraHint">Point at the product and hit Capture. You can take several photos before closing.</p>
+        <div class="modal-foot">
+          <button type="button" class="btn btn-ghost" id="switchCamBtn" title="Switch camera"><i class="fas fa-camera-rotate"></i></button>
+          <span class="spacer"></span>
+          <button type="button" class="btn btn-primary" id="captureBtn"><i class="fas fa-camera"></i> Capture</button>
+        </div>
+      </div>
     </div>
   </div>
 

@@ -26,7 +26,8 @@
     filtered: [],
     shown: PAGE_SIZE,
     editingId: null,
-    pendingUploads: {} // productId -> { file, dataUrl, ext }
+    editImages: [],    // repo-relative paths (or URLs) of the product being edited
+    pendingUploads: {} // path -> dataUrl of new photos, committed on publish
   };
 
   var $ = function (id) { return document.getElementById(id); };
@@ -202,19 +203,30 @@
   function renderTable() {
     var rows = state.filtered.slice(0, state.shown);
     var html = rows.map(function (p) {
-      var img = '<img class="thumb" loading="lazy" src="' + escapeHtml(p.image || 'assets/placeholder.svg') + '" alt="" onerror="this.onerror=null;this.src=\'assets/placeholder.svg\'" />';
+      var nImgs = productImages(p).length;
+      var img = '<span class="thumb-wrap">' +
+        '<img class="thumb" loading="lazy" src="' + escapeHtml(imageSrc(p.image) || 'assets/placeholder.svg') + '" alt="" onerror="this.onerror=null;this.src=\'assets/placeholder.svg\'" />' +
+        (nImgs > 1 ? '<span class="thumb-count">' + nImgs + '</span>' : '') +
+        '</span>';
+      var meta = '<span class="m-meta"><strong>' + priceLabel(p) + '</strong>' +
+        (p.originalPrice != null && p.originalPrice > p.price ? '<s>₹' + p.originalPrice + '</s>' : '') +
+        (!p.active ? '<span class="m-badge b-hide">Hidden</span>' : '') +
+        (p.stock === 'out' ? '<span class="m-badge b-out">Out of stock</span>' : '') +
+        (p.quantity > 0 ? '<span class="m-badge b-qty">Qty ' + p.quantity + '</span>' : '') +
+        '</span>';
       return '<tr class="' + (p.active ? '' : 'row-inactive') + '" data-id="' + escapeHtml(p.id) + '">' +
-        '<td>' + img + '</td>' +
-        '<td class="pname">' + escapeHtml(p.name) +
+        '<td class="c-img">' + img + '</td>' +
+        '<td class="pname c-name">' + escapeHtml(p.name) +
           (p.description ? '<small>' + escapeHtml(p.description.slice(0, 70)) + (p.description.length > 70 ? '…' : '') + '</small>' : '') +
+          meta +
         '</td>' +
-        '<td><span class="cat-pill">' + escapeHtml(p.category) + '</span></td>' +
-        '<td class="num">' + priceLabel(p) + '</td>' +
-        '<td class="num">' + (p.originalPrice != null ? '₹' + p.originalPrice : '—') + '</td>' +
-        '<td class="num"><input type="number" class="qty-input" data-act="qty" min="0" value="' + (p.quantity != null ? p.quantity : 0) + '" /></td>' +
-        '<td><label class="switch stock"><input type="checkbox" data-act="stock" ' + (p.stock === 'in' ? 'checked' : '') + ' /><span class="slider"></span></label></td>' +
-        '<td><label class="switch"><input type="checkbox" data-act="active" ' + (p.active ? 'checked' : '') + ' /><span class="slider"></span></label></td>' +
-        '<td><button class="icon-btn" data-act="edit" title="Edit"><i class="fas fa-pen"></i></button></td>' +
+        '<td class="c-cat"><span class="cat-pill">' + escapeHtml(p.category) + '</span></td>' +
+        '<td class="num c-price">' + priceLabel(p) + '</td>' +
+        '<td class="num c-mrp">' + (p.originalPrice != null ? '<s>₹' + p.originalPrice + '</s>' : '') + '</td>' +
+        '<td class="num c-qty"><input type="number" class="qty-input" data-act="qty" min="0" value="' + (p.quantity != null ? p.quantity : 0) + '" /></td>' +
+        '<td class="c-stock"><label class="switch stock"><input type="checkbox" data-act="stock" ' + (p.stock === 'in' ? 'checked' : '') + ' /><span class="slider"></span></label></td>' +
+        '<td class="c-active"><label class="switch"><input type="checkbox" data-act="active" ' + (p.active ? 'checked' : '') + ' /><span class="slider"></span></label></td>' +
+        '<td class="c-edit"><button class="icon-btn" data-act="edit" title="Edit"><i class="fas fa-pen"></i></button></td>' +
         '</tr>';
     }).join('');
     $('tbody').innerHTML = html;
@@ -252,16 +264,29 @@
   });
 
   $('tbody').addEventListener('click', function (e) {
-    var btn = e.target.closest('[data-act="edit"]');
-    if (!btn) return;
-    openEditor(btn.closest('tr').getAttribute('data-id'));
+    var tr = e.target.closest('tr');
+    if (!tr) return;
+    // open the editor on row tap, unless an inline control was the target
+    if (e.target.closest('[data-act="edit"]') || !e.target.closest('input, label, button, select')) {
+      openEditor(tr.getAttribute('data-id'));
+    }
   });
 
   /* ---------- edit modal ---------- */
 
+  function productImages(p) {
+    if (Array.isArray(p.images)) return p.images.slice();
+    return p.image ? [p.image] : [];
+  }
+
+  function imageSrc(pathOrUrl) {
+    return state.pendingUploads[pathOrUrl] || pathOrUrl;
+  }
+
   function openEditor(id) {
     var p = id ? findProduct(id) : null;
     state.editingId = id || null;
+    state.editImages = p ? productImages(p) : [];
     $('modalTitle').textContent = p ? 'Edit Product' : 'Add Product';
     $('deleteBtn').hidden = !p;
     $('fName').value = p ? p.name : '';
@@ -269,41 +294,165 @@
     $('fPrice').value = p && p.price != null ? p.price : '';
     $('fOriginal').value = p && p.originalPrice != null ? p.originalPrice : '';
     $('fDescription').value = p ? (p.description || '') : '';
+    $('fShipping').value = p ? (p.shippingNote || '') : '';
     $('fQuantity').value = p && p.quantity != null ? p.quantity : 0;
     $('fStock').value = p ? p.stock : 'in';
     $('fActive').checked = p ? !!p.active : true;
-    $('fImage').value = p ? (p.image || '') : '';
     $('fImageFile').value = '';
-    setPreview(p ? p.image : '');
+    $('fImageUrl').value = '';
+    renderGallery();
     $('editModal').hidden = false;
   }
 
-  function setPreview(src) {
-    var img = $('fImagePreview');
-    if (src) {
-      img.src = src;
-      img.hidden = false;
+  function renderGallery() {
+    var imgs = state.editImages;
+    var main = $('fImagePreview');
+    if (imgs.length) {
+      main.src = imageSrc(imgs[0]);
+      main.hidden = false;
       $('imgPlaceholder').hidden = true;
     } else {
-      img.hidden = true;
+      main.hidden = true;
       $('imgPlaceholder').hidden = false;
     }
+    $('imgGallery').innerHTML = imgs.map(function (im, i) {
+      return '<div class="g-item' + (i === 0 ? ' g-main' : '') + '" data-i="' + i + '" title="' +
+        (i === 0 ? 'Main photo' : 'Click to make main') + '">' +
+        '<img src="' + escapeHtml(imageSrc(im)) + '" alt="" />' +
+        (i === 0 ? '<span class="g-badge">Main</span>' : '') +
+        '<button type="button" class="g-remove" data-remove="' + i + '" title="Remove">&times;</button>' +
+        '</div>';
+    }).join('');
   }
 
-  $('fImage').addEventListener('input', function () { setPreview(this.value.trim()); });
-
-  $('fImageFile').addEventListener('change', function () {
-    var file = this.files[0];
-    if (!file) return;
-    if (file.size > 2 * 1024 * 1024) {
-      toast('Image too large — keep it under 2 MB.', 'error');
-      this.value = '';
+  $('imgGallery').addEventListener('click', function (e) {
+    var rm = e.target.closest('[data-remove]');
+    if (rm) {
+      var removed = state.editImages.splice(parseInt(rm.getAttribute('data-remove'), 10), 1)[0];
+      if (removed && state.pendingUploads[removed]) delete state.pendingUploads[removed];
+      renderGallery();
       return;
     }
-    var reader = new FileReader();
-    reader.onload = function () { setPreview(reader.result); };
-    reader.readAsDataURL(file);
+    var item = e.target.closest('.g-item');
+    if (item) {
+      var i = parseInt(item.getAttribute('data-i'), 10);
+      if (i > 0) {
+        var im = state.editImages.splice(i, 1)[0];
+        state.editImages.unshift(im);
+        renderGallery();
+      }
+    }
   });
+
+  // Downscale any image source to a <=900px JPEG data URL
+  function toJpegDataUrl(src) {
+    return new Promise(function (resolve, reject) {
+      var img = new Image();
+      img.onload = function () {
+        var scale = Math.min(1, 900 / Math.max(img.naturalWidth, img.naturalHeight));
+        var canvas = document.createElement('canvas');
+        canvas.width = Math.round(img.naturalWidth * scale);
+        canvas.height = Math.round(img.naturalHeight * scale);
+        var ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#fff';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        resolve(canvas.toDataURL('image/jpeg', 0.82));
+      };
+      img.onerror = reject;
+      img.src = src;
+    });
+  }
+
+  var photoSeq = 0;
+  function addPendingPhoto(dataUrl) {
+    var base = state.editingId || slugify($('fName').value.trim() || 'product');
+    var path = 'assets/products/' + base + '-' + Date.now() + '-' + (++photoSeq) + '.jpg';
+    state.pendingUploads[path] = dataUrl;
+    state.editImages.push(path);
+    renderGallery();
+  }
+
+  $('fImageFile').addEventListener('change', function () {
+    var files = Array.prototype.slice.call(this.files);
+    this.value = '';
+    files.reduce(function (chain, file) {
+      return chain.then(function () {
+        return new Promise(function (resolve) {
+          var reader = new FileReader();
+          reader.onload = function () {
+            toJpegDataUrl(reader.result).then(function (jpeg) {
+              addPendingPhoto(jpeg);
+              resolve();
+            }).catch(function () {
+              toast('Could not read ' + file.name, 'error');
+              resolve();
+            });
+          };
+          reader.readAsDataURL(file);
+        });
+      });
+    }, Promise.resolve());
+  });
+
+  $('addUrlBtn').addEventListener('click', function () {
+    var url = $('fImageUrl').value.trim();
+    if (!url) return;
+    state.editImages.push(url);
+    $('fImageUrl').value = '';
+    renderGallery();
+  });
+
+  /* ---------- camera capture ---------- */
+
+  var cameraStream = null;
+  var cameraFacing = 'environment';
+
+  function startCamera() {
+    stopCamera();
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      toast('Camera not available in this browser.', 'error');
+      return;
+    }
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: cameraFacing, width: { ideal: 1280 } }, audio: false })
+      .then(function (stream) {
+        cameraStream = stream;
+        $('cameraVideo').srcObject = stream;
+        $('cameraModal').hidden = false;
+      })
+      .catch(function (err) {
+        toast('Could not open camera — ' + err.message, 'error');
+      });
+  }
+
+  function stopCamera() {
+    if (cameraStream) {
+      cameraStream.getTracks().forEach(function (t) { t.stop(); });
+      cameraStream = null;
+    }
+    $('cameraVideo').srcObject = null;
+  }
+
+  $('cameraBtn').addEventListener('click', startCamera);
+
+  $('switchCamBtn').addEventListener('click', function () {
+    cameraFacing = cameraFacing === 'environment' ? 'user' : 'environment';
+    startCamera();
+  });
+
+  $('captureBtn').addEventListener('click', function () {
+    var video = $('cameraVideo');
+    if (!cameraStream || !video.videoWidth) return;
+    var scale = Math.min(1, 900 / Math.max(video.videoWidth, video.videoHeight));
+    var canvas = document.createElement('canvas');
+    canvas.width = Math.round(video.videoWidth * scale);
+    canvas.height = Math.round(video.videoHeight * scale);
+    canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+    addPendingPhoto(canvas.toDataURL('image/jpeg', 0.82));
+    toast('Photo added (' + state.editImages.length + ' total). Capture more or close the camera.', 'success');
+  });
+
+  /* ---------- apply / delete ---------- */
 
   $('addBtn').addEventListener('click', function () { openEditor(null); });
 
@@ -319,26 +468,13 @@
     p.price = parseFloat($('fPrice').value);
     p.originalPrice = $('fOriginal').value === '' ? null : parseFloat($('fOriginal').value);
     p.description = $('fDescription').value.trim();
+    p.shippingNote = $('fShipping').value.trim();
     p.quantity = Math.max(0, parseInt($('fQuantity').value, 10) || 0);
     p.stock = $('fStock').value;
     p.active = $('fActive').checked;
-
-    var file = $('fImageFile').files[0];
-    if (file) {
-      var ext = (file.name.split('.').pop() || 'jpg').toLowerCase().replace(/[^a-z0-9]/g, '') || 'jpg';
-      var path = 'assets/products/' + p.id + '-' + Date.now() + '.' + ext;
-      var reader = new FileReader();
-      reader.onload = function () {
-        state.pendingUploads[p.id] = { path: path, dataUrl: reader.result };
-        p.image = path;
-        finishEdit();
-      };
-      reader.readAsDataURL(file);
-    } else {
-      p.image = $('fImage').value.trim();
-      delete state.pendingUploads[p.id];
-      finishEdit();
-    }
+    p.images = state.editImages.slice();
+    p.image = p.images[0] || '';
+    finishEdit();
   });
 
   function finishEdit() {
@@ -352,8 +488,8 @@
     var p = state.editingId && findProduct(state.editingId);
     if (!p) return;
     if (!confirm('Delete "' + p.name + '"? This is removed when you publish.')) return;
+    productImages(p).forEach(function (im) { delete state.pendingUploads[im]; });
     state.products = state.products.filter(function (x) { return x.id !== p.id; });
-    delete state.pendingUploads[p.id];
     finishEdit();
   });
 
@@ -382,14 +518,18 @@
 
   /* ---------- modal close ---------- */
 
+  function closeBackdrop(bd) {
+    bd.hidden = true;
+    if (bd.id === 'cameraModal') stopCamera();
+  }
   document.querySelectorAll('[data-close]').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      btn.closest('.modal-backdrop').hidden = true;
+      closeBackdrop(btn.closest('.modal-backdrop'));
     });
   });
   document.querySelectorAll('.modal-backdrop').forEach(function (bd) {
     bd.addEventListener('mousedown', function (e) {
-      if (e.target === bd) bd.hidden = true;
+      if (e.target === bd) closeBackdrop(bd);
     });
   });
 
@@ -409,18 +549,16 @@
 
   /* ---------- publish to GitHub ---------- */
 
-  function ghRequest(method, path, body) {
-    return fetch('https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + path +
-      (method === 'GET' ? '?ref=' + encodeURIComponent(getBranch()) + '&t=' + Date.now() : ''), {
-      method: method,
-      headers: {
-        'Authorization': 'Bearer ' + getToken(),
-        'Accept': 'application/vnd.github+json',
-        'X-GitHub-Api-Version': '2022-11-28'
-      },
-      body: body ? JSON.stringify(body) : undefined
-    }).then(function (r) {
-      if (r.status === 404 && method === 'GET') return null;
+  var API_BASE = 'https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME;
+
+  function ghFetch(url, options) {
+    options = options || {};
+    options.headers = {
+      'Authorization': 'Bearer ' + getToken(),
+      'Accept': 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28'
+    };
+    return fetch(url, options).then(function (r) {
       if (!r.ok) {
         return r.json().catch(function () { return {}; }).then(function (j) {
           throw new Error('GitHub ' + r.status + (j.message ? ': ' + j.message : ''));
@@ -430,12 +568,23 @@
     });
   }
 
-  function commitFile(path, base64Content, message) {
-    return ghRequest('GET', path).then(function (existing) {
-      var body = { message: message, content: base64Content, branch: getBranch() };
-      if (existing && existing.sha) body.sha = existing.sha;
-      return ghRequest('PUT', path, body);
-    });
+  // The contents API can't read files over 1 MB (products.json is close),
+  // so blob shas are resolved from the full repo tree instead.
+  function getShaMap() {
+    return ghFetch(API_BASE + '/git/trees/' + encodeURIComponent(getBranch()) + '?recursive=1&t=' + Date.now())
+      .then(function (tree) {
+        var map = {};
+        (tree.tree || []).forEach(function (e) {
+          if (e.type === 'blob') map[e.path] = e.sha;
+        });
+        return map;
+      });
+  }
+
+  function commitFile(path, base64Content, message, shaMap) {
+    var body = { message: message, content: base64Content, branch: getBranch() };
+    if (shaMap[path]) body.sha = shaMap[path];
+    return ghFetch(API_BASE + '/contents/' + path, { method: 'PUT', body: JSON.stringify(body) });
   }
 
   $('saveBtn').addEventListener('click', function () {
@@ -448,18 +597,24 @@
     btn.disabled = true;
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Publishing…';
 
-    var uploads = Object.keys(state.pendingUploads);
-    var chain = Promise.resolve();
-    uploads.forEach(function (id) {
-      var u = state.pendingUploads[id];
-      chain = chain.then(function () {
-        return commitFile(u.path, u.dataUrl.split(',')[1], 'admin: upload image for ' + id);
-      });
+    // only upload photos still referenced by a product
+    var referenced = {};
+    state.products.forEach(function (p) {
+      productImages(p).forEach(function (im) { referenced[im] = true; });
     });
+    var uploads = Object.keys(state.pendingUploads).filter(function (path) { return referenced[path]; });
 
-    chain.then(function () {
-      var json = JSON.stringify({ updated: new Date().toISOString(), products: state.products }, null, 1);
-      return commitFile(DATA_PATH, b64EncodeUtf8(json), 'admin: update products (' + state.products.length + ' items)');
+    getShaMap().then(function (shaMap) {
+      var chain = Promise.resolve();
+      uploads.forEach(function (path) {
+        chain = chain.then(function () {
+          return commitFile(path, state.pendingUploads[path].split(',')[1], 'admin: upload ' + path, shaMap);
+        });
+      });
+      return chain.then(function () {
+        var json = JSON.stringify({ updated: new Date().toISOString(), products: state.products }, null, 1);
+        return commitFile(DATA_PATH, b64EncodeUtf8(json), 'admin: update products (' + state.products.length + ' items)', shaMap);
+      });
     }).then(function () {
       state.pendingUploads = {};
       setDirty(false);
