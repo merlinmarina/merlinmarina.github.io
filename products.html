@@ -30,9 +30,9 @@
         <a href="index.html#services">Services</a>
         <a href="index.html#contact">Contact Us</a>
       </nav>
-      <a href="https://wa.me/917338963335" target="_blank" rel="noreferrer" class="btn btn-whatsapp">
-        <i class="fab fa-whatsapp"></i> Ping us in WhatsApp
-      </a>
+      <button class="cart-trigger" type="button" data-cart-open aria-label="Open shopping bag">
+        <i class="fas fa-bag-shopping"></i><span>Bag</span><b data-cart-count>0</b>
+      </button>
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -103,7 +103,15 @@
     </div>
   </footer>
 
+  <div class="cart-backdrop" data-cart-close></div>
+  <aside class="cart-drawer" aria-label="Shopping bag" aria-hidden="true">
+    <div class="cart-drawer-head"><div><span>Your selection</span><h2>Shopping bag</h2></div><button type="button" class="cart-close" data-cart-close aria-label="Close bag">×</button></div>
+    <div class="cart-items" data-cart-items></div>
+    <div class="cart-drawer-foot"><div class="cart-total"><span>Subtotal</span><strong data-cart-total>₹0</strong></div><button type="button" class="btn btn-whatsapp cart-checkout" data-cart-checkout><i class="fab fa-whatsapp"></i> Send order on WhatsApp</button><small>We’ll confirm stock, delivery and payment details with you on WhatsApp.</small></div>
+  </aside>
+
   <script src="js/main.js"></script>
+  <script src="js/cart.js"></script>
   <script src="js/catalog.js"></script>
 </body>
 </html>

@@ -80,7 +80,6 @@
         var discount = p.originalPrice && p.originalPrice > p.price
           ? Math.round((1 - p.price / p.originalPrice) * 100)
           : 0;
-        var msg = encodeURIComponent('Hi! I would like to order: ' + p.name + ' (₹' + p.price + ')');
         return '<div class="product-card' + (out ? ' is-out' : '') + '">' +
           '<div class="product-img">' +
             '<img loading="lazy" src="' + escapeHtml(p.image || 'assets/placeholder.svg') + '" alt="' + escapeHtml(p.name) + '" onerror="this.onerror=null;this.src=\'assets/placeholder.svg\'" />' +
@@ -97,7 +96,7 @@
             '</div>' +
             (out
               ? '<span class="btn btn-out" aria-disabled="true">Out of Stock</span>'
-              : '<a class="btn btn-order" target="_blank" rel="noreferrer" href="https://wa.me/' + WHATSAPP + '?text=' + msg + '"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a>') +
+              : '<button class="btn btn-order" type="button" data-add-to-cart="' + escapeHtml(p.id) + '"><i class="fas fa-bag-shopping"></i> Add to bag</button>') +
           '</div>' +
         '</div>';
       }).join('');
@@ -109,5 +108,16 @@
   moreBtn.addEventListener('click', function () {
     shown += PAGE_SIZE;
     render();
+  });
+
+  grid.addEventListener('click', function (e) {
+    var button = e.target.closest('[data-add-to-cart]');
+    if (!button || !window.MerlinCart) return;
+    var id = button.getAttribute('data-add-to-cart');
+    var product = products.find(function (p) { return String(p.id) === String(id); });
+    if (!product) return;
+    window.MerlinCart.add(product);
+    button.innerHTML = '<i class="fas fa-check"></i> Added';
+    window.setTimeout(function () { button.innerHTML = '<i class="fas fa-bag-shopping"></i> Add to bag'; }, 1300);
   });
 })();
