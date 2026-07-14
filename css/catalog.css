@@ -120,8 +120,11 @@
 }
 
 /* ---------- Mobile ---------- */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .catalog-section { padding-top: 100px; }
+}
+
+@media (max-width: 640px) {
   .catalog-search input { font-size: 16px; } /* avoid iOS focus zoom */
 
   /* Category chips: one swipeable row instead of a tall stack */
@@ -147,4 +150,8 @@
   .product-price s { font-size: 12px; }
   .btn-order, .btn-out { font-size: 12px; padding: 9px 8px; margin-top: 6px; }
   .stock-badge, .discount-badge { font-size: 10px; padding: 3px 8px; }
+}
+
+@media (max-width: 380px) {
+  .product-grid { grid-template-columns: 1fr; }
 }
