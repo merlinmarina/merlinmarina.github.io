@@ -1,5 +1,5 @@
 {
- "updated": "2026-07-07T10:35:17.978Z",
+ "updated": "2026-08-15T11:05:05.571Z",
  "products": [
   {
    "id": "stori-salt-lake-artemia-shrimp-sla",
@@ -10,7 +10,7 @@
    "originalPrice": 520,
    "currency": "INR",
    "image": "assets/products/stori-salt-lake-artemia-shrimp-sla.jpg",
-   "active": true,
+   "active": false,
    "stock": "in",
    "quantity": 0,
    "shippingNote": "",
