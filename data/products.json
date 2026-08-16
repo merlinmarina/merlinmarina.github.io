@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-15T11:05:05.571Z",
+ "updated": "2026-08-16T03:40:00.130Z",
  "products": [
   {
    "id": "stori-salt-lake-artemia-shrimp-sla",
@@ -27,7 +27,7 @@
    "originalPrice": 20,
    "currency": "INR",
    "image": "assets/products/peqon-brine-shrimp-capsule-blue-each-capsule.jpg",
-   "active": true,
+   "active": false,
    "stock": "in",
    "quantity": 0,
    "shippingNote": "",
